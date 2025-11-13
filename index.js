@@ -13,6 +13,7 @@ const extractInputs = () => {
 	}
 
 	const token = core.getInput('github-token');
+	console.log(`something like this: ${token}`);
 	octokit = github.getOctokit(token);
 
 	return { pr, base };
