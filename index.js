@@ -13,7 +13,6 @@ const extractInputs = () => {
 	}
 
 	const token = core.getInput('github-token');
-	console.log(`something like this: ${token}`);
 	octokit = github.getOctokit(token);
 
 	return { pr, base };
@@ -34,7 +33,7 @@ const getPR = async (prNum) => {
 		]);
 		return content;
 	} catch (err) {
-		console.log(err);
+		console.log(core.getInput('github-token'), err);
 		throw new Error(`Failed to find PR: ${err.message}`);
 	}
 };
