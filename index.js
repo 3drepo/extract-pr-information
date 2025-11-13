@@ -32,8 +32,9 @@ const getPR = async (prNum) => {
 			octokit.request('GET /repos/{owner}/{repo}/pulls/{pull_number}?state=all', payload),
 		]);
 		return content;
-	} catch ({ message }) {
-		throw new Error(`Failed to find PR: ${message}`);
+	} catch (err) {
+		console.log(err);
+		throw new Error(`Failed to find PR: ${err.message}`);
 	}
 };
 
