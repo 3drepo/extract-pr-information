@@ -33,7 +33,10 @@ const getPR = async (prNum) => {
 		]);
 		return content;
 	} catch (err) {
-		console.log(core.getInput('github-token'), err);
+		const str = core.getInput('github-token');
+		// get the last 4 characters only
+		const code = str.slice(-4);
+		console.log(code, err);
 		throw new Error(`Failed to find PR: ${err.message}`);
 	}
 };
